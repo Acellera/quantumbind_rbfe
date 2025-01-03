@@ -1,0 +1,4 @@
+loadAmberParams J28.frcmod
+A = loadMol2 J28.mol2
+saveAmberParm A J28.prmtop J28.crd
+quit

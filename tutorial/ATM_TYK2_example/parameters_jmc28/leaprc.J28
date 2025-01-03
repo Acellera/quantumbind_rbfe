@@ -1,0 +1,16 @@
+addAtomTypes {
+	{ "c"  "C" "sp3" }
+	{ "c3"  "C" "sp3" }
+	{ "ca"  "C" "sp3" }
+	{ "cl"  "Cl" "sp3" }
+	{ "cx"  "C" "sp3" }
+	{ "h4"  "H" "sp3" }
+	{ "ha"  "H" "sp3" }
+	{ "hc"  "H" "sp3" }
+	{ "hn"  "H" "sp3" }
+	{ "nb"  "N" "sp3" }
+	{ "ns"  "N" "sp3" }
+	{ "o"  "O" "sp3" }
+}
+loadAmberParams J28.frcmod
+J28 = loadMol2 J28-orig.mol2

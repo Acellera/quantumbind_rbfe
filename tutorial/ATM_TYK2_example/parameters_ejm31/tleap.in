@@ -1,0 +1,4 @@
+loadAmberParams E31.frcmod
+A = loadMol2 E31.mol2
+saveAmberParm A E31.prmtop E31.crd
+quit
