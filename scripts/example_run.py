@@ -4,9 +4,8 @@
 # Usage:
 # python scripts/example_run.py inputs/BACE/A34_A31_r0/
 
-from atm.rbfe_explicit_sync import main as atm_production
+from atm.rbfe_production import rbfe_production
 from glob import glob
-from configobj import ConfigObj
 import subprocess
 import shutil
 import yaml
@@ -18,30 +17,12 @@ def main(sim_dir):
     with open(os.path.join(sim_dir, "nodefile"), "w+") as f:
         f.write("localhost,0:0,1,CUDA,,/tmp")
 
-    config_cntl_file = glob(os.path.join(sim_dir, "*.cntl"))[0]
-    config_cntl = ConfigObj(config_cntl_file)
+    yaml_file = glob(os.path.join(sim_dir, "*.yaml"))[0]
 
-    # Convert cntl file to yaml
-    yaml_file = config_cntl_file.replace(".cntl", ".yaml")
-    config_dict = config_cntl.dict()
-    config_dict["TEMPERATURES"] = [
-        float(config_dict["TEMPERATURES"]),
-    ]
-    config_dict["DIRECTION"] = [int(x) for x in config_dict["DIRECTION"].split(",")]
-    config_dict["INTERMEDIATE"] = [
-        int(x) for x in config_dict["INTERMEDIATE"].split(",")
-    ]
-    config_dict["LAMBDAS"] = [float(x) for x in config_dict["LAMBDAS"].split(",")]
-    config_dict["LAMBDA1"] = [float(x) for x in config_dict["LAMBDA1"].split(",")]
-    config_dict["LAMBDA2"] = [float(x) for x in config_dict["LAMBDA2"].split(",")]
-    config_dict["ALPHA"] = [float(x) for x in config_dict["ALPHA"].split(",")]
-    config_dict["U0"] = [float(x) for x in config_dict["U0"].split(",")]
-    config_dict["W0COEFF"] = [float(x) for x in config_dict["W0COEFF"].split(",")]
+    with open(yaml_file, "r") as of:
+        config_cntl = yaml.safe_load(of)
 
-    with open(yaml_file, "w") as of:
-        yaml.dump(config_dict, of, default_flow_style=None)
-
-    atm_production(yaml_file)
+    rbfe_production(yaml_file)
 
     # We copy the uwham_analysis.R script into the simulation directory
     shutil.copy(
