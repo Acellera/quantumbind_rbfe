@@ -5,6 +5,7 @@
 # python scripts/example_run.py inputs/BACE/A34_A31_r0/
 
 from atm.rbfe_production import rbfe_production
+from atm.uwham import calculate_uwham
 from glob import glob
 import subprocess
 import shutil
@@ -24,40 +25,19 @@ def main(sim_dir):
 
     rbfe_production(yaml_file)
 
-    # We copy the uwham_analysis.R script into the simulation directory
-    shutil.copy(
-        "uwham_analysis.R",
-        sim_dir,
-    )
-
     # These parameters allow you to select which samples you want to use for the analysis.
     # It's recomneded to discard the first 30% samples.
     rmin = int(0.3 * int(config_cntl["MAX_SAMPLES"]))
     rmax = int(config_cntl["MAX_SAMPLES"])
 
-    # Now, we execute the analysis using R
-    r_exec = shutil.which("R", mode=os.X_OK)
-    basename = config_cntl["BASENAME"]
-    subprocess.run(
-        [
-            r_exec,
-            "CMD",
-            "BATCH",
-            f"-{basename}",
-            f"-{rmin}",
-            f"-{rmax}",
-            "uwham_analysis.R",
-        ],
-        cwd=sim_dir,
+    # Now, we execute the analysis
+    ddG, ddG_std, _, _, samples = calculate_uwham(
+        sim_dir, config_cntl["BASENAME"], rmin, rmax
     )
 
-    with open(os.path.join(sim_dir, "uwham_analysis.Rout"), "r") as f:
-        for line in f.readlines():
-            if "DDGb =" in line and "sprintf" not in line:
-                res = line.split(" ")
-                print("ddG:", float(res[2]))
-                print("Error", float(res[4]))
-                print("Replicas", int(res[-1]))
+    print("ddG:", ddG)
+    print("Error", ddG_std)
+    print("Replicas", samples)
 
 
 if __name__ == "__main__":
