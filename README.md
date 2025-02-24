@@ -17,7 +17,7 @@ QuantumBind-RBFE can be run via [Acellera-ATM](https://github.com/Acellera/atm) 
 
 ## References
 
-- **AceForce**:  
-  If you wish to use the AceForce model, Acellera's own NNP, it can be found on Hugging Face: [AceForce 1.0](https://huggingface.co/Acellera/AceForce-1.0).  
-  AceForce 1.0 is available for non-profit use and demonstrations, allowing researchers to explore its potential in their projects.
+- **AceFF**:  
+  If you wish to use the AceFF model, Acellera's own NNP, it can be found on Hugging Face: [AceFF 1.0](https://huggingface.co/Acellera/AceFF-1.0).  
+  AceFF 1.0 is available for non-profit use and demonstrations, allowing researchers to explore its potential in their projects.
 
