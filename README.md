@@ -1,4 +1,4 @@
-# QuantumBind-RBFE
+# QuantumBind®-RBFE
 
 ## Summary
 
@@ -13,7 +13,7 @@ QuantumBind-RBFE is Acellera's implementation for Relative Binding Free Energy (
 
 ## Prerequisites
 
-QuantumBind-RBFE can be run via [Acellera-ATM](https://github.com/Acellera/atm) and [HTMD](https://software.acellera.com/htmd/index.html), Acellera's molecular modeling environment. Ensure that you have both repositories installed and properly configured to execute the provided scripts and workflows.
+QuantumBind-RBFE can be run via [Acellera-ATM](https://github.com/Acellera/atm) and [HTMD](https://software.acellera.com/htmd/index.html), Acellera's molecular modeling environment. Please make sure that you have both repositories installed and properly configured to execute the scripts and workflows.
 
 ## References
 
