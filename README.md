@@ -1,8 +1,8 @@
-# QuantumBind® Relative Bindig Free Energy
+# QuantumBind® Relative Binding Free Energy (RBFE)
 
 ## Summary
 
-QuantumBind-RBFE is Acellera's implementation for Relative Binding Free Energy (RBFE) calculations. This approach is based on the Alchemical Transfer Method (ATM) and incorporates Neural Network Potentials (NNP) within a hybrid NNP/MM framework. The data in this repository was used in the accompanying manuscript: [QuantumBind-RBFE: Accurate Relative Binding Free Energy Calculations Using Neural Network Potentials](https://arxiv.org/abs/2501.01811).
+QuantumBind® RBFE is Acellera's implementation for Relative Binding Free Energy (RBFE) calculations. This approach is based on the Alchemical Transfer Method (ATM) and incorporates Neural Network Potentials (NNP) within a hybrid NNP/MM framework. The data in this repository was used in the accompanying manuscript: [QuantumBind-RBFE: Accurate Relative Binding Free Energy Calculations Using Neural Network Potentials](https://arxiv.org/abs/2501.01811).
 
 ## Contents
 
