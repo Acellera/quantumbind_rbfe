@@ -1,4 +1,4 @@
-# QuantumBind®-RBFE
+# QuantumBind® Relative Bindig Free Energy
 
 ## Summary
 
